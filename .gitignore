@@ -1,0 +1,31 @@
+build/
+dist/
+node_modules/
+.gitcommit
+.appversion
+*.log
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*,cover
+.hypothesis/
+reports/
+
+ncp-debug.log
+npm-debug.log*
+
+.DS_Store
+
+# Sublime text files
+*.sublime-project
+*.sublime-workspace
+yarn.lock
+npm-shrinkwrap.json
+package-lock.json
+.next/
