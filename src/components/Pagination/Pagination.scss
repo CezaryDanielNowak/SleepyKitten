@@ -1,0 +1,46 @@
+.sk-Pagination {
+  clear: fix;
+
+  &__ellipsis,
+  &__item {
+    float: left;
+    font-size: 13px;
+    line-height: 30px;
+    padding: 0 8px;
+  }
+
+  &__ellipsis {
+    cursor: pointer;
+    padding: 0 10px 0 0;
+    pointer-events: none;
+    text-decoration: none;
+  }
+
+  &__item {
+    border-radius: 3px;
+
+    &:not(:last-of-type) {
+      margin: 0 12px 0 0;
+    }
+
+    &,
+    &:link,
+    &:visited {
+      background: palette(background);
+      border: 1px solid palette(text, gray-dark);
+      color: palette(text, gray-dark);
+      text-decoration: none;
+    }
+
+    &:hover,
+    &:active,
+    &--active,
+    &--active:link,
+    &--active:visited {
+      background: palette(action-element);
+      border: 1px solid palette(action-element);
+      color: palette(text, light);
+      text-decoration: none;
+    }
+  }
+}

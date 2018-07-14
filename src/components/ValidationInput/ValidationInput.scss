@@ -1,0 +1,275 @@
+.sk-ValidationInput {
+  $module: &;
+
+  &:not(#{$module}--type-hidden) {
+    padding-top: 30px;
+  }
+
+  &__clear-button {
+    // specificity
+    &.sk-Button {
+      height: 45px;
+      min-width: 0;
+      position: absolute;
+      right: 15px;
+      top: 0;
+      z-index: get-index(clearButton);
+    }
+
+    // specificity
+    &.sk-Button--theme-link {
+      &:focus {
+        text-decoration: none;
+      }
+
+      @include lvha {
+        text-decoration: none;
+      }
+    }
+  }
+
+  &__mismatch-info {
+    align-items: center;
+    color: palette(accent-element);
+    flex-direction: row;
+    justify-content: flex-end;
+    line-height: 1;
+    opacity: 0;
+    position: relative;
+    display: flex;
+    right: 1px;
+    transform: translateY(-50%);
+    transition: opacity 300ms ease-in 0;
+    z-index: get-index(mismatchInfo);
+
+    &--visible {
+      opacity: 1;
+    }
+
+    &--cleared {
+      display: none;
+    }
+  }
+
+  &__mismatch-icon {
+    background-color: palette(background, light);
+    box-sizing: content-box;
+    color: inherit;
+    flex-shrink: 0;
+    padding: 0 7px;
+
+    @media only screen and (max-width: 374px) {
+      display: none;
+    }
+  }
+
+  &__mismatch-text {
+    background-color: palette(background, light);
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    font-size: 11px;
+    padding: 6px 0;
+    padding-right: 10px;
+
+    @media only screen and (max-width: 374px) {
+      font-size: 10px;
+      padding-left: 10px;
+    }
+  }
+
+  &__hint-icon {
+    color: palette(action-element);
+    position: absolute;
+    z-index: 22;
+    margin-top: 12px;
+    right: 5px;
+
+    @include lvha {
+      color: palette(action-element, active);
+    }
+  }
+
+  input {
+    padding: 0 14px;
+
+    ~ #{$module}__hint {
+      background-color: palette(background, dark);
+      border-radius: 5px;
+      color: palette(text, light);
+      display: block;
+      height: 0;
+      left: 0;
+      max-width: 100%;
+      min-width: 320px;
+      opacity: 0;
+      overflow: hidden;
+      padding: 0 20px;
+      transform: translate3d(0, -20px, 0);
+      transition: all .3s ease-in-out;
+      width: calc(100vw - 40px);
+      z-index: 998;
+
+      &--error {
+        background: palette(background, error);
+      }
+    }
+
+    &:focus:not(#{$module}__field--danger) {
+      border-color: palette(action-element);
+      box-shadow: 0 0 10px 0 rgba(palette(action-element), .1);
+    }
+
+    &:focus ~ #{$module}__hint {
+      padding: 20px;
+      opacity: 1;
+      margin-top: 20px;
+      transform: translate3d(0, 0, 0);
+      height: auto;
+    }
+
+    @include placeholder {
+      font-size: 14px;
+      line-height: 21px;
+    }
+  }
+
+  &--type-checkbox {
+    cursor: pointer;
+    display: inline-block;
+    height: 24px;
+    margin-right: 10px;
+    position: relative;
+    top: -1px;
+    width: 24px;
+
+    #{$module}__field {
+      width: 20px;
+      height: 24px;
+    }
+  }
+
+  &__field-wrap {
+    display: block;
+    position: relative;
+
+    &--extra-text-autohide {
+      #{$module}__extra-text {
+        transition: all .3s ease-in-out;
+        opacity: 0;
+      }
+    }
+
+    &--is-focused {
+      &#{$module}__field-wrap--extra-text-autohide {
+        #{$module}__extra-text {
+          opacity: 1;
+        }
+      }
+    }
+
+    &--clearable {
+      input {
+        padding: 0 30px 0 14px;
+      }
+    }
+  }
+
+  &__checkbox-icon {
+    color: palette(text, gray);
+    height: 24px;
+
+    &:focus {
+      box-shadow: none;
+      color: palette(action-element);
+    }
+
+    &--accepted {
+      color: palette(action-element);
+    }
+  }
+
+  &__checkbox-icon + &__field {
+    display: none;
+  }
+
+  &__label {
+    @include form-label;
+    display: block;
+  }
+
+  &__label-optional {
+    opacity: .5;
+  }
+
+  &__field {
+    @include form-input;
+    position: relative;
+    z-index: 2;
+
+    &--danger {
+      // TODO: check rule order in a bundled file; !important should't be required
+      border-color: palette(error) !important; // required to override default style
+      box-shadow: 0 0 2px palette(error);
+    }
+
+    &--warning {
+      border-color: palette(warning);
+      box-shadow: 0 0 2px palette(warning);
+    }
+  }
+
+  &__extra-text {
+    font-size: 12px;
+    color: palette(text, gray);
+    margin-top: 1.5px;
+    position: relative;
+
+    strong {
+      font-weight: normal;
+      color: palette(text, gray-dark);
+    }
+  }
+
+  &__field-wrap--permanent-placeholder {
+    #{$module}__field {
+      background: transparent;
+    }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill,
+    textarea:-webkit-autofill,
+    textarea:-webkit-autofill:hover,
+    textarea:-webkit-autofill:focus,
+    select:-webkit-autofill,
+    select:-webkit-autofill:hover,
+    select:-webkit-autofill:focus {
+      // display placeholder on autocompleted field
+      -webkit-text-fill-color: pallette(black);
+      transition: background-color 5000s ease-in-out 0s;
+      background: transparent;
+    }
+
+    &:after {
+      border-color: transparent;
+      color: palette(text, gray);
+      content: attr(data-permanent-placeholder);
+      display: block;
+      font-family: font(mono);
+      font-size: 12px;
+      letter-spacing: 1px;
+      line-height: 21px;
+      padding: 0 12px;
+      position: absolute;
+      top: 0;
+      white-space: pre;
+      z-index: 1;
+
+      @include xsm-up {
+        line-height: 38px;
+      }
+    }
+  }
+}

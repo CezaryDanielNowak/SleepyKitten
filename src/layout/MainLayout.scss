@@ -1,0 +1,27 @@
+.sk-MainLayout {
+  display: flex;
+  flex-direction: column;
+
+  min-height: 100vh;
+  overflow: hidden;
+
+  &__content {
+    background: palette(background, light);
+    flex: 1 0 auto;
+    
+    > :last-child {
+      padding-bottom: 50px;
+    }
+  }
+}
+
+.is-browser-ie10,
+.is-browser-ie11 {
+  .sk-MainLayout {
+    &__content {
+      > .sk-container {
+        border-top: .1px solid transparent; // Fix contact page on IE
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "console-polyfill",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "peerDependencies": {
+    "no-op": "1.0.3"
+  },
+  "author": "",
+  "license": "ISC"
+}

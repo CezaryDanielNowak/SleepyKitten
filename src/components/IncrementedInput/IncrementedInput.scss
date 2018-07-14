@@ -1,0 +1,51 @@
+.sk-IncrementedInput {
+  $module: &;
+
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  .sk-ValidationInput {
+    padding: 0 !important;
+
+    input {
+      padding: 0 5px;
+    }
+  }
+
+  &__credits-change-input {
+    margin: 0 5px;
+    width: 40px;
+
+    .sk-ValidationInput__field {
+      font-size: 14px;
+      height: 35px;
+      text-align: center;
+    }
+  }
+
+  &__credits-change-button {
+    bottom: -2px;
+    color: palette(background, gray-light);
+    position: relative;
+    background: none;
+    border: none;
+    outline: 0;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      color: palette(background, gray);
+    }
+
+    &[disabled] {
+      opacity: .4;
+      cursor: default;
+
+      &:hover {
+        color: palette(background, gray-light);
+      }
+    }
+  }
+}

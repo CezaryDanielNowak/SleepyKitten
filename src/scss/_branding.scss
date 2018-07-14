@@ -1,0 +1,17 @@
+.sk-branding {
+  background: url('img/header-logo.svg') no-repeat;
+  background-size: contain;
+  display: block;
+  overflow: hidden;
+  padding: 0;
+  text-indent: 200%;
+  white-space: nowrap;
+  height: 100%;
+
+  &--dark {
+    height: 100%;
+    background-image: url('img/header-logo--dark.svg');
+  }
+}
+
+

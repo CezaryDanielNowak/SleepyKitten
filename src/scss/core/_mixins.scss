@@ -1,0 +1,47 @@
+@mixin form-input {
+  background: palette(background, light);
+  border-radius: 5px;
+  border: 1px solid #ecedee; // color not included in palettes
+  box-shadow: 0 0 10px 0 palette(shadow);
+  color: palette(text);
+  font-family: font(sans);
+  font-size: 16px;
+  height: 45px;
+  outline: 0;
+  width: 100%;
+
+  @include placeholder {
+    color: palette(text, gray);
+    font-family: font(sans);
+  }
+}
+
+@mixin form-label {
+  color: palette(text, gray);
+  font-family: font(sans);
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0 0 3px;
+}
+
+@mixin status-colors ($property:color) {
+  &-default,
+  &--default {
+    #{$property}: palette(status);
+  }
+
+  &-amber,
+  &--amber {
+    #{$property}: palette(status, amber);
+  }
+
+  &-green,
+  &--green {
+    #{$property}: palette(status, green);
+  }
+
+  &-red,
+  &--red {
+    #{$property}: palette(status, red);
+  }
+}

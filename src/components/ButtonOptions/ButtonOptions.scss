@@ -1,0 +1,45 @@
+.sk-ButtonOptions {
+  $module: &;
+
+  &__button {
+    background: palette(background, light);
+    border: solid 2px palette(action-element);
+    color: palette(action-element);
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 20px;
+    min-height: 44px;
+    min-width: 150px;
+    padding: 12px 0;
+    text-align: center;
+
+    &--active {
+      background-color: palette(action-element);
+      border: solid 2px palette(action-element);
+      color: palette(text, light);
+    }
+
+    &:hover, &:focus {
+      background-color: palette(action-element);
+      border: solid 2px palette(action-element);
+      color: palette(text, light);
+    }
+  }
+
+  &__form-error {
+    color: palette(error);
+    font-size: 12px;
+    margin: 15px 0;
+    text-align: center;
+  }
+
+  &__header {
+    color: palette(text, gray-dark);
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.5;
+    margin-bottom: 30px;
+    margin-top: 45px;
+    text-align: center;
+  }
+}

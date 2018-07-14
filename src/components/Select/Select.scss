@@ -1,0 +1,117 @@
+.sk-Select {
+  padding-top: 30px;
+  outline: 0; // disable outline caused by a tabindex property
+
+  &__label {
+    @include form-label;
+    display: block;
+  }
+
+  &__field {
+    .Select-control {
+      @include form-input;
+      padding: 0 2px 0 0;
+    }
+
+    .Select-input {
+      input {
+        // disable safari autocomplete UI helper
+        @include disable-autofill;
+
+        font-weight: 300;
+        height: 40px;
+        padding: 0;
+        text-transform: none;
+        width: 100%;
+      }
+    }
+
+    &:not(.is-open) {
+      .Select-clear-zone {
+        display: none;
+      }
+    }
+
+    .Select-placeholder,
+    .Select-value-label {
+      font-size: 14px;
+      line-height: 43px;
+    }
+
+    .Select-value-label-placeholder {
+      color: palette(muted-element, dark) !important;
+      display: none;
+    }
+
+    &.is-focused:not(.is-disabled) {
+      .Select-control {
+        border-color: palette(action-element);
+      }
+    }
+
+    &.is-open {
+      .Select-control {
+        border-radius: 6px 6px 0 0;
+        border-bottom-width: 0;
+      }
+
+      .Select-value-label-placeholder {
+        display: inline;
+      }
+
+      .Select-value-label-text {
+        display: none;
+      }
+    }
+
+    &.is-searchable:not(.is-open) {
+      .Select-control {
+        box-shadow: 0 0 10px 0 rgba(palette(background, gray), .1);
+      }
+    }
+
+    &--danger {
+      .Select-control {
+        border-color: palette(error);
+        box-shadow: 0 0 2px palette(error);
+      }
+    }
+
+    .Select-menu-outer {
+      background-color: palette(background, light);
+      border: 2px solid palette(background);
+      color: palette(text, base);
+      font-size: 14px;
+      margin: -2px 0 0;
+      max-height: 160px;
+    }
+
+    .Select-menu {
+      max-height: 157px;
+    }
+
+    .Select-option {
+      background: transparent;
+
+      &.is-focused {
+        background-color: rgba(palette(action-element, active), .2);
+      }
+    }
+  }
+
+  &--powered {
+    .Select-menu {
+      &:after {
+        background: transparent url('/img/powered_by_google_on_white.png') no-repeat 50% 50%;
+        content: '';
+        display: block;
+        height: 40px;
+        width: 100%;
+      }
+    }
+
+    .Select-loading-zone {
+      display: none;
+    }
+  }
+}

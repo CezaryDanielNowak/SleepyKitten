@@ -1,0 +1,47 @@
+.sk-MaskedValidationInput {
+  $module: &;
+
+  .sk-ValidationInput__field {
+    background: transparent;
+  }
+
+  .sk-ValidationInput__field-wrap {
+    position: relative;
+    line-height: 1;
+    .masked__mask {
+      z-index: 0;
+      margin-left: 13px;
+      position: absolute;
+      left: 3px;
+      top: 1px;
+      color: #ccc;
+      pointer-events: none;
+      line-height: 43px;
+    }
+  }
+
+  input.masked,
+  .masked__mask {
+    font-size: 16px;
+    font-family: monospace;
+    padding-right: 10px;
+    background-color: transparent;
+    text-transform: uppercase;
+  }
+
+  .masked__mask i {
+    font-style: normal;
+    /* any of these 3 will work */
+    color: transparent;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  input {
+    @include autofill {
+      background-color: rgba(250, 255, 189, .2);
+      -webkit-box-shadow: 0 0 0px 255px transparent inset !important;
+      transition: background-color 9999s ease-in-out 0s;
+    }
+  }
+}

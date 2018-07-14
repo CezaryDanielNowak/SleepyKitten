@@ -1,0 +1,9 @@
+$fonts: (
+  slab: 'Georgia, "Times New Roman", serif',
+  sans: 'Arial, Helvetica, sans-serif',
+  mono: 'Consolas, "Andale Mono", monospace'
+);
+
+@function font($type) {
+  @return unquote(map-get($fonts, $type));
+}

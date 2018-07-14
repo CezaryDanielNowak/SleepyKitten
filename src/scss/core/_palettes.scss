@@ -1,0 +1,72 @@
+$palettes: (
+  breadcrumbs: (
+    base: #d4d4d9,
+    active: #007253
+  ),
+  action-element: (
+    base: #ffcb00,
+    active: #ffdc53
+  ),
+  muted-element: (
+    base: #fff,
+    active: #f7f7f7
+  ),
+  text: (
+    light: #fff,
+    base: #1d1f29,
+    gray: #bbbbbe, // disabled elements, not important text
+    gray-dark: #707174,
+    header: #fff,
+    footer: #fff
+  ),
+  background: (
+    light: #fff,
+    base: #f7f7f7,
+    dark: #393c4c,
+    black: #000,
+    gray: #bbbbbe,
+    error: #c30000,
+    blue-gray: #272f44,
+    header: #393c4c,
+    footer: #393c4c
+  ),
+  error: (
+    base: #c30000
+  ),
+  shadow: (
+    base: rgba(179, 178, 185, .1)
+  ),
+  accent-element: (
+    base: #ffcb00
+  ),
+  pipboy2000: (
+    base: #29fd2f
+  ),
+  warning: (
+    base: #c30000
+  ),
+  navy: (
+    base: #1d1f29
+  ),
+  white: (
+    base: #fff
+  ),
+  gray: (
+    base: #aeb1b1
+  ),
+  black: (
+    base: #000
+  ),
+  success: (
+    base: #12b571
+  )
+);
+
+
+@function palette($palette, $tone: 'base') {
+  @if map-has-key($palettes, $palette) {
+    @return map-get(map-get($palettes, $palette), $tone);
+  }
+
+  @error 'Invalid palette or tone name: palette `#{$palette}`, tone `#{$tone}`.';
+}

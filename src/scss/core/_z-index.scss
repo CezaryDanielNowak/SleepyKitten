@@ -1,0 +1,43 @@
+$sharedZIndexes: (
+  breadcrumbs: 10,
+  captureButton: 1,
+  clearButton: 12,
+  cookieInfo: 1000,
+  dialogHeader: 11,
+  dialog: 1000,
+  dialogCloseButton: 99999,
+  floatingText: 16777271,
+  globalLoader: 16777271,
+  helpContents: 99999,
+  mismatchInfo: 2,
+  photoCaptureButtons: 1,
+  transformInvisible: -1,
+  transformVisible: 1,
+  webcamButton: 999999,
+  webcamButtonBefore: 999998,
+  webcamjsFlashDetection: 1,
+);
+
+$ownZIndexes: (
+  debugCssBreakpoints: 16777271,
+  dropdownHidden: -1,
+  dropdownVisible: 9,
+  globalLoader: 16777271,
+  selectMenu: 11,
+  selectMenuOuter: 10,
+  floatingText: 10
+);
+
+@function get-index($zIndexName) {
+  // own z-indexes
+  @if map-has-key($ownZIndexes, $zIndexName) {
+    @return map-get($ownZIndexes, $zIndexName);
+  }
+
+  // shared-frontend z-indexes
+  @if map-has-key($sharedZIndexes, $zIndexName) {
+    @return map-get($sharedZIndexes, $zIndexName);
+  }
+
+  @error 'Invalid z-index name: `#{$zIndexName}`.';
+}

@@ -1,0 +1,281 @@
+.sk-DialogText {
+  $module: &;
+
+  color: palette(text);
+  font-size: 12px;
+  letter-spacing: .5px;
+  margin: 0;
+  padding: 0 20px;
+  text-align: center;
+
+  &:last-of-type {
+    margin: 0 0 30px;
+  }
+
+  a {
+    &,
+    &:link,
+    &:hover,
+    &:visited,
+    &:active {
+      color: palette(action-element);
+    }
+  }
+}
+
+.sk-DialogFooter {
+  margin: 30px 0 0;
+
+  .sk-Button {
+    display: block;
+    margin: 0 auto 20px;
+  }
+}
+
+.sk-Dialog {
+  $module: &;
+
+  animation: fadeIn .4s ease-out 1,
+    bounceIn .4s ease-out 1;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+
+  &--open {
+    z-index: get-index(dialog);
+  }
+
+  &--in-transition {
+    z-index: get-index(dialog);
+
+    &:after {
+      content: '';
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+      z-index: get-index(globalLoader);
+    }
+  }
+
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(palette(background), .8);
+    z-index: get-index(dialogCloseButton);
+  }
+
+  &__overlay--before-open {
+    animation: fadeIn .8s ease-out 1;
+  }
+
+  &__overlay--before-close {
+    animation: fadeOut .7s ease-in-out 1;
+  }
+
+  &__body {
+    box-shadow: 0 0 32px 0 rgba(palette(text, gray-dark), .2);
+    margin: 0 0 40px;
+    padding: 30px;
+
+    @include sm-up() {
+      margin: 0;
+    }
+  }
+
+  &__content {
+    background-color: palette(background, light);
+    border: 0;
+    bottom: auto;
+    box-shadow: 0 0 32px 0 rgba(palette(text, gray-dark), .2);
+    margin-top: 0;
+    padding: 0;
+    position: absolute;
+    right: auto;
+
+    &:focus {
+      outline: 0 !important;
+    }
+
+    @include xsm-up() {
+      border-radius: 6px;
+    }
+
+    #{$module}__body {
+      position: relative;
+    }
+  }
+
+  &__content--before-close {
+    animation: bounceOut .7s ease-in 1;
+  }
+
+  &__content--scrollable {
+    background-color: palette(background, light);
+    border: 0;
+    border-radius: 0;
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    padding: 0;
+    position: absolute;
+    right: auto;
+    top: 0;
+    -webkit-overflow-scrolling: touch;
+
+    // there's a scrolling bug on iOS: https://github.com/metafizzy/flickity/issues/457#issuecomment-341571380
+    // thanks, Apple
+    @at-root .is-browser-iOS & {
+      overflow-y: scroll;
+    }
+  }
+
+  &__scrollable-container {
+    top: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    bottom: 0;
+    overflow-y: scroll;
+  }
+
+  &__title {
+    color: palette(text, gray-dark);
+    font-family: font(slab);
+    line-height: 34px;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  &__close-button {
+    background: none;
+    border: 0;
+    color: palette(background, gray);
+    cursor: pointer;
+    line-height: 0;
+    padding: 0;
+    position: absolute;
+    right: 15px;
+    z-index: get-index(dialogCloseButton);
+
+    &:hover {
+      color: palette(text, gray-dark);
+    }
+  }
+
+  &__header {
+    height: 60px;
+    padding: 30px 20px 13px;
+    position: relative;
+    text-align: center;
+    z-index: get-index(dialogHeader);
+
+    @include xsm-up() {
+      border-color: palette(background, gray);
+      padding: 14px 20px 13px;
+    }
+  }
+
+  &__title {
+    color: palette(text, gray-dark);
+    font-size: 18px;
+    font-family: font(slab);
+    font-weight: 700;
+    margin: 0 0 12px;
+    padding: 0 20px;
+    text-align: center;
+
+    @include xsm-up() {
+      font-size: 14px;
+    }
+  }
+
+  &--xlarge {
+    #{$module}__title {
+      font-size: 18px;
+
+      @include sm-up() {
+        font-size: 14px;
+      }
+    }
+
+    #{$module}__header {
+      border-color: palette(background, light);
+      padding: 30px 20px 13px;
+
+      @include sm-up() {
+        border-color: palette(background, gray);
+        padding: 14px 20px 13px;
+      }
+    }
+
+    #{$module} {
+      margin: 0 0 40px;
+
+      @include sm-up() {
+        margin: 0;
+      }
+    }
+  }
+}
+
+// get rid of the blue outline on the modal
+.ReactModal__Content {
+  &:focus {
+    outline: none;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    margin-top: 120px;
+  }
+
+  70% {
+    margin-top: -50px;
+  }
+
+  100% {
+    margin-top: 0;
+  }
+}
+
+@keyframes bounceOut {
+  0% {
+    margin-top: 0;
+  }
+
+  30% {
+    margin-top: 20px;
+  }
+
+  100% {
+    margin-top: -180px;
+  }
+}

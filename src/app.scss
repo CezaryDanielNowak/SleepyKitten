@@ -1,0 +1,262 @@
+$container-width: 1143px;
+$narrow-container-width: 600px;
+$wide-container-width: 1400px;
+
+@import 'node_modules/normalize.css/normalize';
+
+@mixin optional-at-root($sel) {
+  @at-root #{if(not &, $sel, selector-append(&, $sel))} {
+    @content;
+  }
+}
+
+@mixin placeholder {
+  @include optional-at-root('::-webkit-input-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root(':-moz-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root('::-moz-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root(':-ms-input-placeholder') {
+    @content;
+  }
+}
+
+@mixin autofill {
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill {
+      @content;
+    }
+}
+
+@mixin clearfix {
+  &:before,
+  &:after {
+    content: '';
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin lvha {
+  &:link,
+  &:visited,
+  &:hover,
+  &:active {
+    @content;
+  }
+}
+
+@mixin lvhaf {
+  &:link,
+  &:visited,
+  &:hover,
+  &:active,
+  &:focus {
+    @content;
+  }
+}
+
+@mixin button-transparent {
+  background: none;
+  border: 0;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+}
+
+@mixin disable-autofill {
+  &::-webkit-contacts-auto-fill-button {
+    visibility: hidden;
+    display: none !important;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+  }
+}
+
+@import 'scss/core/fonts';
+@import 'scss/core/media-queries';
+@import 'scss/core/mixins';
+@import 'scss/core/palettes';
+@import 'scss/core/z-index';
+@import 'scss/core/animations';
+@import 'scss/grid';
+@import 'scss/*.scss';
+@import './components/**/*.scss';
+@import './scss/overrides/**/*.scss';
+@import './layout/**/*.scss';
+@import './pages/**/*.scss';
+
+* {
+  box-sizing: border-box;
+}
+
+#app, body {
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  &,
+  &:hover,
+  &:focus,
+  &:active {
+    color: palette(text);
+    text-decoration: underline;
+  }
+
+  &[href^="tel:"] {
+    white-space: pre;
+  }
+}
+
+b, strong {
+  font-weight: 700;
+}
+
+textarea,
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"] {
+  // https://stackoverflow.com/questions/10757146/iphone-ios-will-not-display-box-shadow-properly
+  -webkit-appearance: none;
+}
+
+
+a, button, input {
+  -ms-touch-action: manipulation; /* IE10, TODO: check if autoprefixer supports it  */
+  touch-action: manipulation;   /* IE11+ */
+}
+
+img {
+  display: block;
+}
+
+p img {
+  display: inline-block;
+}
+
+body {
+  margin: 0;
+  background: palette(background, light);
+  font-family: font(sans);
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.3em;
+
+  &.scroll--disabled {
+    overflow-y: hidden;
+    position: relative;
+    #app {
+      overflow: scroll; // prevent page jumping
+    }
+  }
+}
+
+.sk-container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 5%;
+  padding-right: 5%;
+  max-width: $container-width;
+
+  &--narrow {
+    max-width: $narrow-container-width;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  &--wide {
+    max-width: $wide-container-width;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.sk-or {
+  background: palette(text, gray);
+  border: none;
+  display: block;
+  height: 1px;
+  position: relative;
+  width: 100%;
+  margin: 25px 0;
+  line-height: 1em;
+  font-size: 12px;
+
+  &:after {
+    content: 'or';
+    position: absolute;
+    left: calc(50% - 25px);
+    margin-top: -.5em;
+    background: palette(background, light);
+    width: 50px;
+    text-align: center;
+  }
+}
+
+.sk-vertical-or {
+  background: palette(text, gray);
+  display: block;
+  width: 1px;
+  margin: 0 25px;
+  line-height: 1em;
+  font-size: 12px;
+}
+
+p {
+  color: palette(text, gray);
+  font-family: font(sans);
+  margin-top: 30px;
+
+  strong {
+    color: palette(text);
+    font-weight: normal;
+  }
+}
+
+.sk-p,
+.sk-ul {
+  color: palette(text);
+  font-family: font(sans);
+  font-size: 16px;
+  font-stretch: normal;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 28px;
+}
+
+.sk-hr {
+  background: palette(action-element);
+  border: none;
+  display: block;
+  height: 3px;
+  margin: 0 0 20px 0;
+  position: relative;
+  width: 120px;
+}
+
+.sk-center {
+  text-align: center;
+
+  img {
+    margin: 0 auto;
+  }
+}
+
+.sk-nobr {
+  white-space: nowrap;
+}

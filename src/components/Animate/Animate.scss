@@ -1,0 +1,28 @@
+.sk-Animate {
+  &-enter {
+    opacity: .01;
+
+    &#{&}-active {
+      transition: opacity 500ms ease-in;
+      opacity: 1;
+    }
+  }
+
+  &-leave {
+    opacity: 1;
+
+    &#{&}-active {
+      transition: opacity 300ms ease-in;
+      opacity: .01;
+    }
+  }
+
+  &-appear {
+    opacity: .01;
+    transition: opacity 300ms linear;
+
+    &#{&}-active {
+      opacity: 1;
+    }
+  }
+}

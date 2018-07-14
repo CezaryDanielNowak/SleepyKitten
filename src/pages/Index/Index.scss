@@ -1,0 +1,43 @@
+.sk-Index {
+  $module: &;
+  $number-bullet-size: 30px;
+
+  &__intro-box {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    position: relative;
+
+    img {
+      margin: 0 auto;
+    }
+
+    p {
+      margin-top: 30px;
+    }
+  }
+
+  &__intro-number {
+    background: palette(background, blue-gray);
+    border-radius: 100%;
+    color: palette(text, light);
+    font-family: font(slab);
+    font-size: 16px;
+    font-weight: normal;
+    height: $number-bullet-size;
+    line-height: $number-bullet-size;
+    text-align: center;
+    width: $number-bullet-size;
+    float: left;
+  }
+
+  &__intro-text {
+    font-size: 16px;
+    font-weight: bold;
+    font-family: font(sans);
+    text-align: left;
+    padding-top: 6px;
+    margin-bottom: 30px;
+    padding-left: calc(#{$number-bullet-size} + 12px);
+  }
+}

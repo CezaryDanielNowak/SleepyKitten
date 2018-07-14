@@ -1,0 +1,32 @@
+.sk-FloatingText {
+  $module: &;
+
+  background: palette(background);
+  color: palette(text);
+  font-size: 13px;
+  left: 0;
+  opacity: 0;
+  padding: 17px 12px 11px;
+  position: fixed;
+  top: 0;
+  transform: translateY(-50px);
+  transition: opacity .3s,
+    transform .3s;
+  width: 100%;
+  z-index: get-index(floatingText);
+
+  &--visible {
+    opacity: 1;
+    transform: translateY(-5px);
+  }
+
+  &--error {
+    background: palette(error);
+    color: palette(text, light);
+  }
+
+}
+
+.sk-Dialog .sk-FloatingText {
+  position: absolute;
+}

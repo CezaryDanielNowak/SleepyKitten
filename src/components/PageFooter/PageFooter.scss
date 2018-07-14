@@ -1,0 +1,15 @@
+.sk-PageFooter {
+  @include clearfix;
+  background-color: palette(background, footer);
+  position: relative;
+  flex: none;
+
+  &__copyrights {
+    color: palette(text, footer);
+    text-align: center;
+    font-size: 12px;
+    line-height: 1;
+    margin-top: 25px;
+  }
+
+}

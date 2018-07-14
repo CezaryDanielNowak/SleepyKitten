@@ -1,0 +1,9 @@
+@keyframes card-alert-in {
+  from {
+    border: 1px solid darken(palette(background), 2);
+  }
+
+  to {
+    border: 1px solid rgba(palette(background, dark), .35);
+  }
+}

@@ -1,0 +1,68 @@
+.sk-PageHeader {
+  $module: &;
+  $logo-height: 50px;
+  $sm-up-logo-height: 50px;
+  $big-height: 160px;
+  $sm-up-height: 80px;
+  $height: 66px;
+  $secondary-brand-font-size: 27px;
+
+  @include clearfix;
+  background: palette(background, header);
+  flex: none;
+  height: $height;
+  padding: 7px 0 0;
+  max-width: 100vw;
+
+  @include xsm-up() {
+    height: $sm-up-height;
+    padding: 20px 0 0;
+  }
+
+  &__branding {
+    background: url('img/header-logo.svg') no-repeat;
+    background-size: contain;
+    color: transparent;
+    display: block;
+    height: $logo-height;
+    overflow: hidden;
+    padding: 0;
+    white-space: nowrap;
+    min-width: 200px;
+
+    @include lvha {
+      color: transparent;
+    }
+
+    &--dark {
+      height: 100%;
+      background-image: url('img/header-logo--dark.svg');
+    }
+
+    @include xsm-up() {
+      height: $sm-up-logo-height;
+      background-position: top center;
+    }
+  }
+
+  .sk-container {
+    @include clearfix;
+  }
+
+  &__main-navigation {
+    float: right;
+    margin: 8px 0 0;
+  }
+
+  &__primary-brand {
+    float: left;
+    height: $logo-height;
+    margin: 5px 0 0 10px;
+    max-width: 100vw;
+
+    @include xsm-up() {
+      height: $sm-up-logo-height;
+      margin: 0 0 0 $sm-up-logo-height * .2;
+    }
+  }
+}

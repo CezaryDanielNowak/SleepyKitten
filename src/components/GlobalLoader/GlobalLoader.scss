@@ -1,0 +1,30 @@
+.sk-GlobalLoader {
+  background: rgba(palette(background), .2);
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: get-index(globalLoader);
+
+  &__spinner {
+    margin: 0 auto;
+    top: calc(50vh - 40px);
+  }
+
+  &__message {
+    left: 0;
+    margin-left: 10px;
+    margin-top: 60px;
+    position: fixed;
+    text-align: center;
+    top: 50%;
+    width: 100%;
+
+    &-text {
+      background: rgba(palette(background, light), .75);
+      display: inline-block;
+      padding: 5px;
+    }
+  }
+}

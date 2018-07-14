@@ -1,31 +1,33 @@
-build/
-dist/
-node_modules/
-.gitcommit
-.appversion
-*.log
 
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*,cover
-.hypothesis/
-reports/
+# Distribution / packaging
+dist/
+downloads/
+eggs/
+.eggs/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+node_modules/
+package-lock.json
+
+*.log
 
 ncp-debug.log
 npm-debug.log*
 
+config.local.js
+dist/
+tmp/
 .DS_Store
 
 # Sublime text files
 *.sublime-project
 *.sublime-workspace
+
 yarn.lock
 npm-shrinkwrap.json
 package-lock.json
-.next/

@@ -1,0 +1,27 @@
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.sk-Spinner {
+  position: relative;
+
+  &--medium {
+    width: 80px;
+    height: 80px;
+  }
+
+  &__circle {
+    animation: spin 2s linear infinite;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}

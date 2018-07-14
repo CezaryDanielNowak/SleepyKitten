@@ -1,0 +1,91 @@
+.sk-ValidationDateInput {
+  $module: &;
+  display: flex;
+  flex-direction: column;
+
+  .sk-ValidationInput__label {
+    white-space: nowrap;
+  }
+
+  &__inputs {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    position: relative;
+
+    .sk-ValidationInput {
+      padding-top: 0;
+    }
+  }
+
+  &__altvalues {
+    // specificity
+    &.sk-AltValues {
+      margin-top: 10px;
+
+      @include xsm-up {
+        margin-top: -10px;
+      }
+    }
+  }
+
+  &__date-input {
+    .sk-ValidationInput__field {
+      text-align: center;
+      padding: 0;
+
+      @include placeholder {
+        font-size: 14px;
+      }
+    }
+
+    &:nth-child(2) {
+      .sk-ValidationInput__hint {
+        position: relative;
+        left: -57px;
+      }
+    }
+
+    &:nth-child(3) {
+      .sk-ValidationInput__hint {
+        position: relative;
+        left: -114px;
+      }
+    }
+
+    &--short {
+      margin-right: 10px;
+      width: 47px;
+
+      .sk-ValidationInput__mismatch-info {
+        display: none;
+      }
+    }
+
+    &--long {
+      width: 100px;
+
+      .sk-ValidationInput__field-wrap {
+        position: static;
+
+        @include xsm-up {
+          overflow: visible !important;
+          position: relative;
+        }
+      }
+
+      .sk-ValidationInput__mismatch-info {
+        max-width: 100%;
+        position: absolute;
+        right: 0;
+
+        @include xsm-up {
+          justify-content: flex-start;
+          margin-left: 10px;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+}
